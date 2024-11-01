@@ -4,12 +4,13 @@ import { faker } from '@faker-js/faker';
 const randomName = faker.person.firstName()
 const randomLastName = faker.person.lastName()
 const randomEmail = faker.internet.email(randomName, randomLastName)
+const home = 'http://lojaebac.ebaconline.art.br/minha-conta/'
 
 
 describe('Funcionalidade: cadastro', () => {
     
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit(home)
     });
 
     it('Deve criar uma conta com um email novo', () => {
