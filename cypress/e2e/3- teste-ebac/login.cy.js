@@ -47,7 +47,7 @@ beforeEach(() => {
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, juan (não é juan? Sair)')
     })
 
-    it.only('Deve fazer login com sucesso - usando o fixture', () => {
+    it('Deve fazer login com sucesso - usando o fixture', () => {
 
         cy.fixture('perfil').then(dados => {
             cy.get('#username').type (dados.usuario)
@@ -55,5 +55,10 @@ beforeEach(() => {
             cy.get('.woocommerce-form > .button').click()
             cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, juan (não é juan? Sair)')
         })
+    })
+
+    it.only('Deve fazer login usando o commands', () => {
+        cy.login('juan@teste.com.br', 'juan123')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, juan (não é juan? Sair)')
     })
 })

@@ -30,7 +30,7 @@ describe('Funcionalidade: cadastro', () => {
         cy.get('.woocommerce-message').should('contain', 'Detalhes da conta modificados com sucesso.')
     });
 
-    it.only('Deve criar uma conta com um email novo', () => {
+    it('Deve criar uma conta com um email novo', () => {
         cy.get('#reg_email').type(randomEmail)
         cy.get('#reg_password').type('juan123')
         cy.get(':nth-child(4) > .button').click()
@@ -47,5 +47,8 @@ describe('Funcionalidade: cadastro', () => {
 
         cy.get('.woocommerce-message').should('contain', 'Detalhes da conta modificados com sucesso.')
 });
-
+    it.only('Deve completar o perfil usando o Commands', () => {
+        cy.preCadastro(faker.internet.email(), 'juan123', faker.person.firstName(), faker.person.lastName())
+        cy.get('.woocommerce-message').should('contain', 'Detalhes da conta modificados com sucesso.')
+    })
 })
