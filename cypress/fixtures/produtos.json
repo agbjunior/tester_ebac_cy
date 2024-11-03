@@ -1,0 +1,22 @@
+[
+    {
+        "nomeProduto": "Ajax Full-Zip Sweatshirt",
+        "tamanho": "XL",
+        "cor": "Blue",
+        "quantidade": 5
+    },
+
+    {
+        "nomeProduto": "Ingrid Running Jacket",
+        "tamanho": "S",
+        "cor": "Red",
+        "quantidade": 2
+    },
+
+    {
+        "nomeProduto": "Thorpe Track Pant",
+        "tamanho": "36",
+        "cor": "Black",
+        "quantidade": 1
+    }
+]
