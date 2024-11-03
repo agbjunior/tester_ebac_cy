@@ -1,20 +1,26 @@
 /// <reference types = 'cypress'/>
 
+import produtosPage from "../../support/page-objects/produtos.page";
+
 describe('Funcionalidade: Produto', () => {
     
     beforeEach(() => {
-        cy.visit('produtos')
+        produtosPage.visitarUrl()
     });
     
     it('Deve selecionar um produto da lista', () => {
-        cy.get('.product-block')
-        //.first()
-        //.last()
-        //.eq(2)
-        .contains ('Aether Gym Pant')
-        .click()
-
-        cy.get('.woocommerce-product-details__short-description > p').should('contain', 'This is a variable product called a Aether Gym Pant')
+        produtosPage.buscarProdutoLista('Ajax Full-Zip Sweatshirt')
+        cy.get('#tab-title-description > a').should('contain', 'Descrição')
     });
-  
+    it.only('Deve buscar um produto com sucesso', () => {
+        produtosPage.buscarProduto('Ingrid Running Jacket')
+        cy.get('.search > .tbay-search-form > .form-ajax-search > .form-group > .input-group > .button-group > .button-search').click()
+        cy.get('.product_title').should('contain', 'Ingrid Running Jacket')
+    });
+    it('Deve visitar a pagina do produto especifico ', () => {
+        produtosPage.visitarProduto()
+    });
+    it('Deve add o produto ao carrinho', () => {
+        produtosPage.addProdutoLista()
+    });
 })
